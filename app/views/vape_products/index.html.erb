@@ -1,0 +1,37 @@
+<p style="color: green"><%= notice %></p>
+
+
+<h1>Vape products</h1>
+
+<div id="vape_products">
+  <% @vape_products.each do |vape_product| %>
+    <%= render vape_product %>
+    <p>
+      <%= link_to "Show this vape product", vape_product %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New vape product", new_vape_product_path %>
+<h2>Custom Vape Products</h2>
+
+<% current_category = nil %>
+
+<% @products_by_category.each do |product| %>
+  <% if product.category != current_category %>
+    <h2><%= product.category %></h2>
+    <% current_category = product.category %>
+  <% end %>
+
+  <p><strong>Name:</strong> <%= product.name %></p>
+  <p><strong>Description: <%= product.desc %></strong></p>
+  <p><strong>Price:</strong> $<%= product.price %></p>
+<% end %>
+
+<ul>
+  <% @categories.each do |category| %>
+    <li><%= link_to category, category_path(category) %></li>
+  <% end %>
+</ul>
+
+

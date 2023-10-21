@@ -1,0 +1,2 @@
+class VapeProduct < ApplicationRecord
+end
